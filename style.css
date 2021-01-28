@@ -5,8 +5,104 @@
 * {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
 }
 
+:root{
+    --font-primary: "Baloo Da 2", serif;
+    --font-secundary: "Josefin Slab", serif;
+    --font-action: "Mulish", serif;
+}
+.hamburguer{
+     /* background: red;  */
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    right: 2rem;
+    top: 2rem;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+ .show-menu .hamburguer{
+    right: 17rem;
+    transition: all 1s;
+} 
+.hamburguer .line{
+    width: 80%;
+    height: .3rem;
+    background: #fff;
+    border-radius: .3rem;
+    box-shadow: 0.15rem 0.15rem 1px #000;
+    transition: all 1s ease-in-out;
+}
+.hamburguer .line::before,
+.hamburguer .line::after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: .3rem;
+    background: #fff;
+    border-radius: .2rem;
+    box-shadow: 0.15rem 0.15rem 0.15rem #000;
+    transition: all 1s ease-in-out;
+}
+
+.hamburguer .line::after{
+    transform: translateY(.8rem);
+}
+.hamburguer .line::before{
+    transform: translateY(-.8rem);
+}
+.hamburguer.open .line{
+    background: transparent;
+    box-shadow: none;
+}
+.hamburguer.open .line::before{
+    transform: rotate(45deg) translate(.7rem,-.7rem);
+    background: linear-gradient(to right, #373b44, #4286f4);
+    box-shadow: none;
+}
+.hamburguer.open .line::after{
+    transform: rotate(-45deg) translate(.7rem,.7rem);
+    background: linear-gradient(to right, #373b44, #4286f4);
+    box-shadow: none;
+}
+
+.hamburguer span{
+    position: absolute;
+    left: 5rem;
+    height: 2rem;
+    width: 6rem;
+    background: linear-gradient(to right, #373b44, #4286f4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-action);
+    color: #fff;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+.hamburguer span::before{
+    content: '';
+    position: absolute;
+    border-right: .5rem solid  #373b44;
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    left: -1rem;
+    
+}
+
+.show-menu .hamburguer:hover span{
+    opacity: 1;
+}
 header {
     width: 100%;
     height: 100vh;
@@ -26,7 +122,7 @@ header {
     height: 100vh;
     object-fit: cover;
     opacity: 0.5;
-    animation: zoomAnimate 25s;
+    animation: zoomAnimate 10s;
 }
 
 @keyframes zoomAnimate{
@@ -47,7 +143,7 @@ header {
 .banner h1 {
     color: #fff;
     font-size: 3.5em;
-    font-family: "Baloo Da 2", sans-serif;
+    font-family: var(--font-primary);
     font-weight: 200;
     text-shadow: 0.2rem 0.3rem 2px rgba(0, 0, 0, 0.4);
     line-height: 3.5rem;
@@ -57,7 +153,7 @@ header {
 }
 
 .banner p {
-    font-family: "Josefin Slab";
+    font-family: var(--font-secundary);
     color: #fff;
     font-size: 1.5rem;
     text-shadow: 0.2rem 0.2rem 2px rgba(0, 0, 0, 0.4);
@@ -67,11 +163,11 @@ header {
 }
 
 .banner button {
-    font-family: "Mulish";
+    font-family: var(--font-action);
     color: #fff;
     font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: .1;
+    letter-spacing: 0.1rem;
     background: #373b44;
     background: -webkit-linear-gradient(to right, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #373b44, #4286f4);
@@ -92,4 +188,69 @@ header {
         transform: translateY(0) rotateY(0) rotateX(0);
         opacity: 1;
     }
+}
+
+.sidebar {
+    width: 20rem;
+    height: 100vh;
+    position: fixed;
+    background: #fff;
+    top: 0;
+    right: -20rem;
+    transition: all 1s;
+}
+
+.show-menu .sidebar{
+    right: 0;
+    
+}
+
+.menu {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.menu-item{
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.menu-link{
+   font-family:  var(--font-action);
+   font-size: 2rem;
+   color: #555;
+   transition: color 1s;
+}
+
+.menu-link:hover{
+    color: #1c30e29a;
+}
+
+.social-media{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-media i {
+    color:  #1c30e29a;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .3rem solid #1c30e29a;
+    border-radius: 50%;
+    transition: 1s;
+}
+
+.social-media i:hover{
+    transform: scale(1.4);
+    color: #070e509a;
+    border-color: #070e509a;
 }
