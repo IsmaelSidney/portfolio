@@ -9,4 +9,6 @@ hamburguer.addEventListener("click", function(){
         menuOpen = false;
     }
     document.querySelector(".container").classList.toggle("show-menu");
+    
 });
+
